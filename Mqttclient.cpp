@@ -10,6 +10,7 @@
 
 Mqtt_client::Mqtt_client() {
 	// TODO Auto-generated constructor stub
+	mosqpp::lib_init();
 	id = NULL;
 	clean_session = true;
 	port = NULL;
