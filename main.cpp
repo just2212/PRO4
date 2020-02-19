@@ -3,6 +3,7 @@
  *
  *  Created on: Feb 15, 2020
  *      Author: nikolaj
+ * Description: a simple mqqt client program
  */
 
 #include <iostream>
@@ -17,19 +18,17 @@
 int main(int argc, char **argv) {
 	class Mqtt_client *client;
 
+	//variables used to connect with broker
 	char client_id[] = CLIENT_ID;
 	char host[] = BROKER_ADDRESS;
-	int port = MQTT_PORT
-	;
+	int port = MQTT_PORT;
 	bool clean_session = CLEAN_SESSION;
 	char topic[] = MQTT_TOPIC;
 
-
+	//creates a new mosquitto instance
 	client = new Mqtt_client(client_id, clean_session, port, host, topic);
 
 
-	while(1)
-		;
 
 	return 0;
 

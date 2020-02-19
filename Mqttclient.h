@@ -3,6 +3,7 @@
  *
  *  Created on: Feb 15, 2020
  *      Author: nikolaj
+ * Description: a simple mqqt client program
  */
 
 #ifndef MQTTCLIENT_H_

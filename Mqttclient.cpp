@@ -3,11 +3,13 @@
  *
  *  Created on: Feb 15, 2020
  *      Author: nikolaj
+ * Description: a simple mqqt client program
  */
 
 #include "Mqttclient.h"
 #include <iostream>
 
+//default constructor
 Mqtt_client::Mqtt_client() {
 	// TODO Auto-generated constructor stub
 	mosqpp::lib_init();
@@ -22,12 +24,14 @@ Mqtt_client::Mqtt_client() {
 
 }
 
+//constructor
 Mqtt_client::~Mqtt_client() {
 	// TODO Auto-generated destructor stub
 	loop();              // Kill the thread
 	mosqpp::lib_cleanup();    // Mosquitto library cleanup
 }
 
+//overloaded constructor, start mosquitto instance, and connects to broker
 Mqtt_client::Mqtt_client(const char *id, bool clean_session, int port,
 		const char *host, const char *topic) :
 		mosquittopp(id, clean_session) {
@@ -43,18 +47,16 @@ Mqtt_client::Mqtt_client(const char *id, bool clean_session, int port,
 
 
 	connect_to();
-	//mosquitto_connect_callback_set()
+
 
 }
 
-//void Mqtt_client::start_server(const char * id, bool clean_session, void * obj) {
-
-//}
 
 void Mqtt_client::connect_to() {
-
+	//connecting asynckron, checks if connect succeded
 	if((connect_async(host, port, keepalive)) == MOSQ_ERR_SUCCESS) {
 		std::cout <<"connected!"<<std::endl;
+		//starts the network loop.
 		loop_start();
 	}
 	else
@@ -73,7 +75,7 @@ void Mqtt_client::connect_to() {
 
 } */
 
-
+// handlers
 void Mqtt_client::on_disconnect(int rc) {
 	std::cout << ">> Team 4 MQTT client - disconnection(" << rc << ")"
 			<< std::endl;
