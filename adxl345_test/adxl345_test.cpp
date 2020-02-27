@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#define SAMPLES 2000
+#define SAMPLES 100
 using namespace std;
 
 int main(int argc, char **argv) {
@@ -22,19 +22,10 @@ int main(int argc, char **argv) {
 	ADXL345 sensor(1,0x53);
 	sensor.setResolution(ADXL345::HIGH);
 	sensor.setRange(ADXL345::PLUSMINUS_16_G);
-	sensor.setBWrate(ADXL345::BANDWITH_200_Hz);
+	sensor.setBWrate(ADXL345::BANDWITH_25_Hz);
 
-	if((sensor.OpenOutFile()) == 1)  {
-		cout<<"couldn't open file"<<endl;
-	return -1;
-	}
-	if((sensor.ReadSensorState(SAMPLES)) == 1 )
-		cout<<"couldn't write to file"<<endl;
+sensor.ReadSensorState(SAMPLES);
 
-	if((sensor.CloseOutFile()) == 1) {
-		cout<<"couldn't close file"<<endl;
-		return -2;
-	}
 
 
 	return 0;
