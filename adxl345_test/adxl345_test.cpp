@@ -11,6 +11,8 @@
 
 #include <iostream>
 #include "ADXL345.h"
+#include <unistd.h>
+#include <pthread.h>
 
 #define SAMPLES 2000
 using namespace std;
