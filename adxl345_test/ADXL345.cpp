@@ -17,7 +17,7 @@
  */
 
 ADXL345::ADXL345(unsigned int bus, unsigned int address) :
-	I2C(I2CBus, I2CAddress)
+	I2C(bus, address)
 {
 	this->I2CAddress = address;
 	this->I2CBus = bus;
