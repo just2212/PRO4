@@ -23,7 +23,19 @@ int main(int argc, char **argv) {
 	sensor.setResolution(ADXL345::HIGH);
 	sensor.setRange(ADXL345::PLUSMINUS_16_G);
 	sensor.setBWrate(ADXL345::BANDWITH_200_Hz);
-  sensor.ReadSensorState(SAMPLES);
+
+	if((sensor.OpenOutFile()) == 1)  {
+		cout<<"couldn't open file"<<endl;
+	return -1;
+	}
+	if((sensor.ReadSensorState(SAMPLES)) == 1 )
+		cout<<"couldn't write to file"<<endl;
+
+	if((sensor.CloseOutFile()) == 1) {
+		cout<<"couldn't close file"<<endl;
+		return -2;
+	}
+
 
 	return 0;
 

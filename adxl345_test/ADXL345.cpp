@@ -28,7 +28,8 @@ ADXL345::ADXL345(unsigned int bus, unsigned int address) :
 	this->range = ADXL345::PLUSMINUS_16_G;
 	this->resolution = ADXL345::HIGH;
 	this->baud = ADXL345::BANDWITH_1600_Hz;
-	this->writeRegister(BW_RATE, 0x0f);
+	//this->writeRegister(BW_RATE, 0x0f);
+	this->writeRegister(POWER_CTL, 0x08);
 	this->updateRegisters();
 
 }
